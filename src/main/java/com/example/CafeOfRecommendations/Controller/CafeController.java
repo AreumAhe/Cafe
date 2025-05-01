@@ -1,5 +1,6 @@
 package com.example.CafeOfRecommendations.Controller;
 
+import com.example.CafeOfRecommendations.Exception.NoCoffeeNameForThePreference;
 import com.example.CafeOfRecommendations.Service.CafeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,18 +22,14 @@ public class CafeController {
 //    @GetMapping("/menu")
 //    public List<String> getMenu(){
 //        return cafeService.Menu;
-//    }
 
     @GetMapping("/{preference}")
     public ResponseEntity<List<String>> getCustomCoffee(@PathVariable String preference){
 
         List<String> coffeeName = cafeService.suggest(preference);
 
-//        if (coffeeName == null || coffeeName.isEmpty()) {
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-//        }
-
         return ResponseEntity.ok(coffeeName);
     }
+//    }
 
 }
