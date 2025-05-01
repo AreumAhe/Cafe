@@ -24,13 +24,13 @@ public class CafeController {
 //    }
 
     @GetMapping("/{preference}")
-    public ResponseEntity<String> getCustomCoffee(String preference){
+    public ResponseEntity<List<String>> getCustomCoffee(@PathVariable String preference){
 
-        String coffeeName = cafeService.suggest(preference);
+        List<String> coffeeName = cafeService.suggest(preference);
 
-        if (coffeeName == null || coffeeName.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
+//        if (coffeeName == null || coffeeName.isEmpty()) {
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+//        }
 
         return ResponseEntity.ok(coffeeName);
     }

@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface CafeRepository extends JpaRepository<CafeEntity, List<String>> {
 
-    @Query("SELECT coffeeName FROM CafeEntity c WHERE c.preference = ?1")
-    String findCoffeeNameByPreference(String preference);
+    @Query("SELECT c.coffeeName FROM CafeEntity c WHERE c.preference = ?1")
+    List<String> findCoffeeNameByPreference(String preference);
 
 }

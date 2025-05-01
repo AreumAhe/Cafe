@@ -4,33 +4,27 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import org.springframework.stereotype.Component;
 
 @Entity
-@Table(name = "cafe_entity")
+@Table(name = "coffeerecommendations")  // Ensure this matches your table name
 public class CafeEntity {
+
     @Id
-    public int serialNo;
+    @Column(name = "s_no")  // Match the actual column name in the database
+    private int sNo;
 
-    public String preference;
+    @Column(name = "preference")  // Ensure the column name matches the database
+    private String preference;
 
-    @Column(name = "CoffeeName")
-    public String coffeeName;
+    @Column(name = "coffee_name")  // Ensure the column name matches the database
+    private String coffeeName;
 
-    public int getSerialNo() {
-        return serialNo;
+    public int getsNo() {
+        return sNo;
     }
 
-    public void setSerialNo(int serialNo) {
-        this.serialNo = serialNo;
-    }
-
-    public String getCoffeeName() {
-        return coffeeName;
-    }
-
-    public void setCoffeeName(String coffeeName) {
-        this.coffeeName = coffeeName;
+    public void setsNo(int sNo) {
+        this.sNo = sNo;
     }
 
     public String getPreference() {
@@ -39,5 +33,13 @@ public class CafeEntity {
 
     public void setPreference(String preference) {
         this.preference = preference;
+    }
+
+    public String getCoffeeName() {
+        return coffeeName;
+    }
+
+    public void setCoffeeName(String coffeeName) {
+        this.coffeeName = coffeeName;
     }
 }
