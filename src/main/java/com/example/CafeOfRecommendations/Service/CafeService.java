@@ -26,10 +26,13 @@ public class CafeService {
     }
 
 //    public List<String> suggestByPreference(String preference) {
-//        return cafeRepository.findByPreference(preference)
-//                .stream()
-//                .map(CafeEntity::getCoffeeName)
-//                .toList(); // Java 16+ or use collect(Collectors.toList())
+////        return cafeRepository.findByPreference(preference)
+////                .stream()
+////                .map(CafeEntity::getCoffeeName)
+////                .toList(); // Java 16+ or use collect(Collectors.toList())
+//    CafeEntity cafe = cafeRepository.findByPreference(preference);
+//    List<String> bleh = cafe.getCoffeeName();
+//    return bleh;
 //    }
 
     public List<String> Menu() {
@@ -38,6 +41,16 @@ public class CafeService {
 
     public void saveCafe(CafeEntity cafeEntity) {
         cafeRepository.save(cafeEntity);
+    }
+
+    public void saveUrlCafe(int sNo, String coffeeName, String Preference){
+        CafeEntity cafeEntity = new CafeEntity();
+
+        cafeEntity.setCoffeeName(coffeeName);
+        cafeEntity.setPreference(Preference);
+        cafeEntity.setsNo(sNo);
+
+        saveCafe(cafeEntity);
     }
 
     public void deleteCoffee(int sNo) {

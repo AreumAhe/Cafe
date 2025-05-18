@@ -6,7 +6,6 @@ import com.example.CafeOfRecommendations.Service.CafeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,13 +38,8 @@ public class CafeController {
 
     @PostMapping("/add/{sNo}/{coffeeName}/{Preference}")
     public ResponseEntity<String> newCoffeeWithEndpoint(@PathVariable int sNo, @PathVariable String coffeeName, @PathVariable String Preference){
-        CafeEntity cafeEntity = new CafeEntity();
 
-        cafeEntity.setCoffeeName(coffeeName);
-        cafeEntity.setPreference(Preference);
-        cafeEntity.setsNo(sNo);
-
-        cafeService.saveCafe(cafeEntity);
+        cafeService.saveUrlCafe(sNo, coffeeName, Preference);
         return ResponseEntity.status(HttpStatus.CREATED).body("Created new Coffee from URL Path");
     }
 

@@ -16,4 +16,5 @@ public interface CafeRepository extends JpaRepository<CafeEntity, Integer> {
     @Query("SELECT c.coffeeName FROM CafeEntity c")
     List<String> findCoffeeNames();
 
+//    CafeEntity findByPreference(String preference);
 }
